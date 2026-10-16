@@ -1,0 +1,54 @@
+package b47;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+class Student {
+	private String id;
+	private String name;
+	double gpa;
+
+	public Student(String id, String name, double gpa) {
+		this.id = id;
+		this.name = name;
+		this.gpa = gpa;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public double getGpa() {
+		return gpa;
+	}
+
+	public void display() {
+		System.out.println(id + " " +  + " " + gpa);
+	}
+}
+
+public class Main {
+	public static void main(String[] args) {
+		ArrayList<Student> students = new ArrayList<>();
+		students.add(new Student("S01", "NguyenVanA", 7.5));
+		students.add(new Student("S02", "TranVanB", 4.5));
+		students.add(new Student("S03", "LeVanC", 8.0));
+		students.add(new Student("S04", "PhamVanD", 5.0));
+		students.removeIf(s -> s.gpa < 5.0);
+
+		System.out.println("After removing GPA < 5.0:");
+		for (Student s : students) {
+			System.out.println(s);
+		}
+
+		students.sort(Comparator.comparing(s -> s.name));
+		System.out.println("\nAfter sorting by name:");
+		for (Student s : students) {
+			System.out.println(s);
+		}
+	}
+}
